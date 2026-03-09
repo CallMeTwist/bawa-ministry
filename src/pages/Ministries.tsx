@@ -4,6 +4,7 @@ import SectionHeader from "@/components/SectionHeader";
 import MinistryCard from "@/components/MinistryCard";
 import { getMinistries } from "@/services/apiService";
 import type { Ministry } from "@/services/apiService";
+import { Link } from "react-router-dom";
 
 const Ministries = () => {
   const [ministries, setMinistries] = useState<Ministry[]>([]);
@@ -43,7 +44,9 @@ const Ministries = () => {
         {!loading && !error && ministries.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {ministries.map((m) => (
-              <MinistryCard key={m.id} ministry={m} />
+              <Link to={`/ministries/${m.slug}`} key={m.id}>
+                <MinistryCard ministry={m} />
+              </Link>
             ))}
           </div>
         )}

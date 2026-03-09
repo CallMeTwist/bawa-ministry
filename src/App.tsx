@@ -7,13 +7,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
-const Devotionals = lazy(() => import("./pages/Devotionals"));
+const Devotionals     = lazy(() => import("./pages/Devotionals"));
 const DevotionalDetail = lazy(() => import("./pages/DevotionalDetail"));
-const Sermons = lazy(() => import("./pages/Sermons"));
-const Events = lazy(() => import("./pages/Events"));
-const Ministries = lazy(() => import("./pages/Ministries"));
-const About = lazy(() => import("./pages/About"));
-const Contact = lazy(() => import("./pages/Contact"));
+const Sermons         = lazy(() => import("./pages/Sermons"));
+const Events          = lazy(() => import("./pages/Events"));
+const EventDetail     = lazy(() => import("./pages/EventDetail"));      // ← add
+const Ministries      = lazy(() => import("./pages/Ministries"));
+const MinistryDetail  = lazy(() => import("./pages/MinistryDetail"));   // ← add
+const About           = lazy(() => import("./pages/About"));
+const Contact         = lazy(() => import("./pages/Contact"));
 
 const queryClient = new QueryClient();
 
@@ -31,15 +33,17 @@ const App = () => (
       <BrowserRouter>
         <Suspense fallback={<Loading />}>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/devotionals" element={<Devotionals />} />
-            <Route path="/devotionals/:slug" element={<DevotionalDetail />} />
-            <Route path="/sermons" element={<Sermons />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/ministries" element={<Ministries />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/"                    element={<Index />} />
+            <Route path="/devotionals"         element={<Devotionals />} />
+            <Route path="/devotionals/:slug"   element={<DevotionalDetail />} />
+            <Route path="/sermons"             element={<Sermons />} />
+            <Route path="/events"              element={<Events />} />
+            <Route path="/events/:id"          element={<EventDetail />} />
+            <Route path="/ministries"          element={<Ministries />} />
+            <Route path="/ministries/:slug"    element={<MinistryDetail />} />
+            <Route path="/about"               element={<About />} />
+            <Route path="/contact"             element={<Contact />} />
+            <Route path="*"                    element={<NotFound />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

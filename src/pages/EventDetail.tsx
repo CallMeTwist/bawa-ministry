@@ -6,22 +6,17 @@ import MainLayout from "@/layouts/MainLayout";
 import EventCard from "@/components/EventCard";
 import { getEventById, getEvents } from "@/services/apiService";
 import type { ChurchEvent } from "@/services/apiService";
-import eventHero from "@/assets/event-hero.jpg";
 
 const EventDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const [event, setEvent]           = useState<ChurchEvent | null>(null);
+  const [event, setEvent]             = useState<ChurchEvent | null>(null);
   const [otherEvents, setOtherEvents] = useState<ChurchEvent[]>([]);
-  const [loading, setLoading]       = useState(true);
-  const [notFound, setNotFound]     = useState(false);
+  const [loading, setLoading]         = useState(true);
+  const [notFound, setNotFound]       = useState(false);
 
   useEffect(() => {
     if (!id) return;
-
-    Promise.all([
-      getEventById(Number(id)),
-      getEvents(),
-    ])
+    Promise.all([getEventById(Number(id)), getEvents()])
       .then(([eventRes, eventsRes]) => {
         setEvent(eventRes.data);
         setOtherEvents(eventsRes.data.filter((e) => e.id !== Number(id)).slice(0, 3));
@@ -67,6 +62,7 @@ const EventDetail = () => {
   return (
     <MainLayout>
       <div className="page-container max-w-4xl mx-auto">
+
         <Link
           to="/events"
           className="inline-flex items-center gap-1 text-accent text-sm font-medium mb-8 hover:underline"
@@ -76,11 +72,15 @@ const EventDetail = () => {
 
         {/* Hero banner */}
         <div className="relative rounded-2xl overflow-hidden mb-10">
-          <img
-            src={event.image ?? eventHero}
-            alt={event.title}
-            className="w-full h-64 md:h-80 object-cover"
-          />
+          {event.image ? (
+            <img
+              src={event.image}
+              alt={event.title}
+              className="w-full h-64 md:h-80 object-cover"
+            />
+          ) : (
+            <div className="w-full h-64 md:h-80 bg-gradient-to-br from-primary via-primary/80 to-accent/60" />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
           <div className="absolute inset-0 flex flex-col items-center justify-end p-8 md:p-12 text-center">
             <div className="inline-flex items-center gap-2 bg-background/80 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent mb-6">
@@ -105,9 +105,7 @@ const EventDetail = () => {
 
         {/* Description */}
         <div className="prose-custom font-body text-foreground/90 leading-relaxed text-base md:text-lg mb-10">
-          <h2 className="font-heading text-2xl font-semibold text-foreground mb-4">
-            About This Event
-          </h2>
+          <h2 className="font-heading text-2xl font-semibold text-foreground mb-4">About This Event</h2>
           <p>{event.description}</p>
           <p className="mt-4">
             Join us for this special gathering as we come together as a church family.
@@ -135,7 +133,7 @@ const EventDetail = () => {
             <Clock className="h-6 w-6 text-accent mx-auto mb-2" />
             <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Time</p>
             <p className="font-heading font-semibold text-foreground">
-              {event.time ?? "See event details"}
+              {event.time ? event.time : "See event details"}
             </p>
           </div>
         </div>
@@ -192,6 +190,7 @@ const EventDetail = () => {
             </div>
           </div>
         )}
+
       </div>
     </MainLayout>
   );

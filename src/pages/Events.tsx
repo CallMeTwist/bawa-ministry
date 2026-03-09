@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import MainLayout from "@/layouts/MainLayout";
 import SectionHeader from "@/components/SectionHeader";
 import EventCard from "@/components/EventCard";
@@ -6,9 +7,9 @@ import { getEvents } from "@/services/apiService";
 import type { ChurchEvent } from "@/services/apiService";
 
 const Events = () => {
-  const [events, setEvents] = useState<ChurchEvent[]>([]);
+  const [events, setEvents]   = useState<ChurchEvent[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError]     = useState(false);
 
   useEffect(() => {
     getEvents()
@@ -49,7 +50,9 @@ const Events = () => {
         {!loading && !error && events.length > 0 && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {events.map((e) => (
-              <EventCard key={e.id} event={e} />
+              <Link to={`/events/${e.id}`} key={e.id} className="block">
+                <EventCard event={e} />
+              </Link>
             ))}
           </div>
         )}
