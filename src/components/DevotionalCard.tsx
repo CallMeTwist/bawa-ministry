@@ -33,9 +33,9 @@ const DevotionalCard = ({ devotional }: { devotional: Devotional }) => (
           
         </div>
         <span className="flex items-center gap-1">
-  <Eye className="h-3 w-3" />
-  {devotional.views.toLocaleString()}
-</span>
+          <Eye className="h-3 w-3" />
+          {(devotional.views ?? 0).toLocaleString()}
+        </span>
         <Link
           to={`/devotionals/${devotional.slug}`}
           className="text-accent text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all"

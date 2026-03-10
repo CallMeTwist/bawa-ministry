@@ -20,7 +20,7 @@ export interface Devotional {
   message: string;
   prayer: string;
   featured_image: string | null;
-  views: number;
+  views: number | null;
 }
 
 export interface Sermon {

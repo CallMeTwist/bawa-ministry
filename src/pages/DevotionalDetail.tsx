@@ -83,7 +83,7 @@ const DevotionalDetail = () => {
           </span>
           <span className="flex items-center gap-1.5 bg-secondary px-3 py-1 rounded-full">
             <Eye className="h-4 w-4 text-accent" />
-            <span className="font-medium text-foreground">{devotional.views.toLocaleString()}</span>
+            <span className="font-medium text-foreground">{(devotional.views ?? 0).toLocaleString()}</span>
             <span className="text-xs">views</span>
           </span>
         </div>
