@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center gap-2">
             <Church className="h-7 w-7 text-accent" />
-            <span className="font-heading text-xl font-bold text-foreground">Grace Church</span>
+            <span className="font-heading text-xl font-bold text-foreground">Tina Bawa Ministries</span>
           </Link>
 
           {/* Desktop nav */}

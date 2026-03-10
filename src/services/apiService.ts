@@ -14,12 +14,13 @@ export interface Devotional {
   slug: string;
   author: string;
   date: string;
-  scripture_reference: string;
+  scripture_reference: string[];
   verse_text: string;
   excerpt: string;
   message: string;
   prayer: string;
   featured_image: string | null;
+  views: number;
 }
 
 export interface Sermon {
@@ -46,6 +47,7 @@ export interface ChurchEvent {
   time: string | null;
   location: string;
   category: string | null;
+  theme: string | null; 
   registration_url: string | null;
   is_featured: boolean;
   image: string | null;
@@ -129,3 +131,17 @@ export const getMinistryBySlug = (slug: string): Promise<{ data: Ministry }> =>
 
 export const getTeamMembers = (): Promise<{ data: TeamMember[] }> =>
   get('/team');
+
+export const submitContactForm = (data: {
+  name: string;
+  email: string;
+  message: string;
+}): Promise<{ message: string }> =>
+  fetch(`${BASE}/contact`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  }).then((res) => {
+    if (!res.ok) return res.json().then((err) => Promise.reject(err));
+    return res.json();
+  });

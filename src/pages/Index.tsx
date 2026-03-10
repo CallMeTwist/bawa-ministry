@@ -33,7 +33,7 @@ const Index = () => {
         <div className="absolute inset-0 gradient-navy opacity-75" />
         <div className="relative z-10 container mx-auto px-4 py-20 text-center">
           <p className="text-accent font-body text-sm font-semibold tracking-widest uppercase mb-4 animate-fade-in">
-            Welcome to Grace Church
+            Welcome to Tina Bawa Ministries
           </p>
           <h1
             className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold leading-tight max-w-4xl mx-auto mb-6 animate-fade-in"

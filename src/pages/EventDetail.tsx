@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Calendar, MapPin, Clock, Share2, Tag, ExternalLink } from "lucide-react";
+import { ArrowLeft, Calendar, MapPin, Clock, Share2, Tag, ExternalLink, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MainLayout from "@/layouts/MainLayout";
 import EventCard from "@/components/EventCard";
@@ -102,6 +102,23 @@ const EventDetail = () => {
             </div>
           </div>
         </div>
+
+        {/* ── Theme banner — shown right below hero when set ── */}
+        {event.theme && (
+          <div className="flex items-center gap-4 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border border-accent/30 rounded-2xl px-6 py-5 mb-10">
+            <div className="w-10 h-10 rounded-full bg-gold-light flex items-center justify-center shrink-0 text-accent">
+              <Sparkles className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground uppercase tracking-widest font-semibold mb-0.5">
+                Event Theme
+              </p>
+              <p className="font-heading text-lg font-semibold text-foreground italic">
+                "{event.theme}"
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Description */}
         <div className="prose-custom font-body text-foreground/90 leading-relaxed text-base md:text-lg mb-10">

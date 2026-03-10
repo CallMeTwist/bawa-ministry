@@ -9,7 +9,7 @@ const Footer = () => (
         <div>
           <div className="flex items-center gap-2 mb-4">
             <Church className="h-6 w-6 text-accent" />
-            <span className="font-heading text-xl font-bold">Grace Church</span>
+            <span className="font-heading text-xl font-bold">Tina Bawa Ministries</span>
           </div>
           <p className="text-primary-foreground/70 text-sm leading-relaxed">
             A community of faith, hope, and love. Join us as we grow together in Christ.
@@ -48,15 +48,15 @@ const Footer = () => (
           <div className="space-y-3 text-sm text-primary-foreground/70">
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4 text-accent shrink-0" />
-              <span>123 Faith Avenue, Grace City</span>
+              <span>Abuja, Nigeria <br />USA</span>
             </div>
             <div className="flex items-center gap-2">
               <Phone className="h-4 w-4 text-accent shrink-0" />
-              <span>(555) 123-4567</span>
+              <span>+2347064412910</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-accent shrink-0" />
-              <span>info@gracechurch.org</span>
+              <span>info@tinabawaministries.org</span>
             </div>
           </div>
           <div className="flex gap-3 mt-4">
@@ -68,7 +68,7 @@ const Footer = () => (
       </div>
 
       <div className="border-t border-primary-foreground/10 mt-12 pt-8 text-center text-sm text-primary-foreground/50">
-        <p>&copy; {new Date().getFullYear()} Grace Church. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Tina Bawa Ministries International. All rights reserved.</p>
       </div>
     </div>
   </footer>

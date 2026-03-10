@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Calendar, User, Share2, BookOpen } from "lucide-react";
+import { ArrowLeft, Calendar, User, Share2, BookOpen, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MainLayout from "@/layouts/MainLayout";
 import { getDevotionalBySlug } from "@/services/apiService";
@@ -81,12 +81,32 @@ const DevotionalDetail = () => {
               year: 'numeric', month: 'long', day: 'numeric',
             })}
           </span>
+          <span className="flex items-center gap-1.5 bg-secondary px-3 py-1 rounded-full">
+            <Eye className="h-4 w-4 text-accent" />
+            <span className="font-medium text-foreground">{devotional.views.toLocaleString()}</span>
+            <span className="text-xs">views</span>
+          </span>
         </div>
 
-        {/* Scripture */}
+        {/* Scripture
         <div className="bg-secondary rounded-xl p-6 md:p-8 mb-10 border-l-4 border-accent">
           <p className="scripture-text text-foreground mb-3">"{devotional.verse_text}"</p>
           <p className="scripture-reference">— {devotional.scripture_reference}</p>
+        </div> */}
+
+        {/* Scripture */}
+        <div className="bg-secondary rounded-xl p-6 md:p-8 mb-10 border-l-4 border-accent">
+          <p className="scripture-text text-foreground mb-4">"{devotional.verse_text}"</p>
+          <div className="flex flex-wrap gap-2">
+            {devotional.scripture_reference.map((ref) => (
+              <span
+                key={ref}
+                className="scripture-reference inline-flex items-center gap-1.5 bg-accent/10 text-accent px-3 py-1 rounded-full text-sm border border-accent/20"
+              >
+                <BookOpen className="h-3 w-3" /> {ref}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Message */}

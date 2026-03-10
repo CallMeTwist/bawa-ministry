@@ -11,9 +11,9 @@ const Devotionals     = lazy(() => import("./pages/Devotionals"));
 const DevotionalDetail = lazy(() => import("./pages/DevotionalDetail"));
 const Sermons         = lazy(() => import("./pages/Sermons"));
 const Events          = lazy(() => import("./pages/Events"));
-const EventDetail     = lazy(() => import("./pages/EventDetail"));      // ← add
+const EventDetail     = lazy(() => import("./pages/EventDetail"));      
 const Ministries      = lazy(() => import("./pages/Ministries"));
-const MinistryDetail  = lazy(() => import("./pages/MinistryDetail"));   // ← add
+const MinistryDetail  = lazy(() => import("./pages/MinistryDetail"));
 const About           = lazy(() => import("./pages/About"));
 const Contact         = lazy(() => import("./pages/Contact"));
 
