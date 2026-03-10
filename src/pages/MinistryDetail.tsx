@@ -82,7 +82,8 @@ const MinistryDetail = () => {
         </Link>
 
         {/* Hero */}
-        <div className="relative rounded-2xl overflow-hidden mb-12">
+        {/* Hero */}
+        <div className="relative rounded-2xl overflow-hidden mb-6">
           {ministry.image ? (
             <img
               src={ministry.image}
@@ -93,6 +94,8 @@ const MinistryDetail = () => {
             <div className="w-full h-64 md:h-80 bg-gradient-to-br from-primary via-primary/80 to-accent/60" />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
+
+          {/* Only icon + name stay inside the overlay — no description here */}
           <div className="absolute inset-0 flex flex-col items-center justify-end p-8 md:p-12 text-center">
             <div className="w-16 h-16 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center mb-4 text-accent">
               {ministryIcon}
@@ -100,11 +103,11 @@ const MinistryDetail = () => {
             <h1 className="font-heading text-3xl md:text-5xl font-bold text-foreground mb-3">
               {ministry.name}
             </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              {ministry.description}
-            </p>
           </div>
         </div>
+        <p className="text-muted-foreground text-lg text-center max-w-2xl mx-auto mb-12 leading-relaxed">
+          {ministry.description}
+        </p>
 
         {/* Leader / Meeting Time / Email cards */}
         <div className="grid sm:grid-cols-3 gap-6 mb-10">

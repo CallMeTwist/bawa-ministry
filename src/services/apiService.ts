@@ -83,6 +83,15 @@ export interface PaginatedResponse<T> {
   };
 }
 
+export interface TeamMember {
+  id: number;
+  name: string;
+  role: string;
+  bio: string;
+  image: string | null;
+  sort_order: number;
+}
+
 // ── API Functions ─────────────────────────────────────────────────────────────
 
 export const getDailyVerse = (): Promise<{ data: DailyVerse }> =>
@@ -117,3 +126,6 @@ export const getEventById = (id: number): Promise<{ data: ChurchEvent }> =>
 
 export const getMinistryBySlug = (slug: string): Promise<{ data: Ministry }> =>
   get(`/ministries/${slug}`);
+
+export const getTeamMembers = (): Promise<{ data: TeamMember[] }> =>
+  get('/team');
