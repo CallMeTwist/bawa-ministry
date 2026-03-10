@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Church, Mail, Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import tinalogo from "@/assets/tinalogo.png";
 
 const Footer = () => (
   <footer className="bg-primary text-primary-foreground">
@@ -8,7 +9,11 @@ const Footer = () => (
         {/* Brand */}
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <Church className="h-6 w-6 text-accent" />
+            <img
+              src={tinalogo}
+              alt="Tina Bawa Ministries"
+              className="h-16 w-auto object-contain"
+            />
             <span className="font-heading text-xl font-bold">Tina Bawa Ministries</span>
           </div>
           <p className="text-primary-foreground/70 text-sm leading-relaxed">

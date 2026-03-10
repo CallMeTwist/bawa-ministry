@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Church } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import tinalogo from "@/assets/tinalogo.png";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -22,7 +23,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center gap-2">
-            <Church className="h-7 w-7 text-accent" />
+            <img
+              src={tinalogo}
+              alt="Tina Bawa Ministries"
+              className="h-16 w-auto object-contain"
+            />
             <span className="font-heading text-xl font-bold text-foreground">Tina Bawa Ministries</span>
           </Link>
 

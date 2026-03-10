@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import verseBg from "@/assets/verse-bg.jpg";
+import verseBg from "@/assets/verse-bg2.png";
 import { getDailyVerse } from "@/services/apiService";
 import type { DailyVerse as DailyVerseType } from "@/services/apiService";
 
