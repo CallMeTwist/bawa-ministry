@@ -351,7 +351,7 @@ const MinistryDetail = () => {
         )}
 
         {/* Leader / Meeting Time / Email cards */}
-        <div className="grid sm:grid-cols-3 gap-6 mb-10">
+        <div className="grid sm:grid-cols-2 gap-6 mb-10">
           {ministry.leader && (
             <div className="bg-secondary rounded-xl p-6 text-center">
               <Users className="h-6 w-6 text-accent mx-auto mb-2" />
@@ -364,18 +364,6 @@ const MinistryDetail = () => {
               <Clock className="h-6 w-6 text-accent mx-auto mb-2" />
               <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">When We Meet</p>
               <p className="font-heading font-semibold text-foreground">{ministry.meeting_time}</p>
-            </div>
-          )}
-          {ministry.email && (
-            <div className="bg-secondary rounded-xl p-6 text-center">
-              <Mail className="h-6 w-6 text-accent mx-auto mb-2" />
-              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Contact</p>
-              <a
-                href={`mailto:${ministry.email}`}
-                className="font-heading font-semibold text-accent hover:underline break-all"
-              >
-                {ministry.email}
-              </a>
             </div>
           )}
         </div>
@@ -391,12 +379,22 @@ const MinistryDetail = () => {
         )}
 
         {/* Meeting time highlight */}
-        {ministry.meeting_time && (
+      
           <div className="bg-gold-light rounded-xl p-6 md:p-8 mb-10 text-center">
-            <h3 className="font-heading text-lg font-semibold text-foreground mb-2">📅 When We Meet</h3>
-            <p className="font-body text-foreground/80">{ministry.meeting_time}</p>
+            <h3 className="font-heading text-lg font-semibold text-foreground mb-2">For Partnership & Volunteers</h3>
+            <p className="font-body text-foreground/80">
+              <a
+            href="mailto:tinabawa.ministries@gmail.com"
+            className="text-foreground text-sm font-semibold hover:underline block"
+          >
+            ✉ tinabawa.ministries@gmail.com
+          </a>
+          <a href="tel:08069743456" className="text-foreground text-sm font-semibold hover:underline block mt-0.5">
+            📞 08069743456
+          </a>
+            </p>
           </div>
-        )}
+        
 
         {/* Share & CTA */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-border mb-12">

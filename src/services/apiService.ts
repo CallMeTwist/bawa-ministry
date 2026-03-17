@@ -41,6 +41,7 @@ export interface Sermon {
 export interface ChurchEvent {
   id: number;
   title: string;
+  slug: string;
   description: string;
   date: string;
   end_date: string | null;
@@ -125,8 +126,8 @@ export const getEvents = (): Promise<PaginatedResponse<ChurchEvent>> =>
 export const getMinistries = (): Promise<{ data: Ministry[] }> =>
   get('/ministries');
 
-export const getEventById = (id: number): Promise<{ data: ChurchEvent }> =>
-  get(`/events/${id}`);
+export const getEventBySlug = (slug: string): Promise<{ data: ChurchEvent }> =>
+  get(`/events/${slug}`);
 
 export const getFeaturedEvents = (): Promise<{ data: ChurchEvent[] }> =>
   get('/events/featured');

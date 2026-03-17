@@ -196,6 +196,63 @@ const Index = () => {
         )}
       </section>
 
+      <section className="bg-primary">
+  <div className="page-container py-14">
+    <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      {/* Partnership */}
+      <div className="flex items-start gap-4">
+        <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0 text-accent text-xl">
+          🤝
+        </div>
+        <div>
+          <h3 className="font-heading text-lg font-bold text-primary-foreground mb-1">
+            Partner & Sponsor With Us
+          </h3>
+          <p className="text-primary-foreground/70 text-sm mb-3">
+            Join our family of partners and help us impact lives across Africa and beyond.
+          </p>
+          <a
+            href="mailto:tinabawa.ministries@gmail.com"
+            className="text-accent text-sm font-semibold hover:underline block"
+          >
+            ✉ tinabawa.ministries@gmail.com
+          </a>
+          <a href="tel:08069743456" className="text-accent text-sm font-semibold hover:underline block mt-0.5">
+            📞 08069743456
+          </a>
+        </div>
+      </div>
+
+      {/* Donations */}
+      <div className="flex items-start gap-4">
+        <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0 text-accent text-xl">
+          🏦
+        </div>
+        <div>
+          <h3 className="font-heading text-lg font-bold text-primary-foreground mb-1">
+            Send a Donation
+          </h3>
+          <p className="text-primary-foreground/70 text-sm mb-3">
+            Your giving supports women, children and communities across Nigeria and Africa.
+          </p>
+          <div className="bg-primary-foreground/10 rounded-xl px-4 py-3 border border-primary-foreground/20">
+            <p className="text-xs text-primary-foreground/60 uppercase tracking-wider mb-1">
+              Tina Bawa Ministries International Inc.
+            </p>
+            <p className="font-heading font-bold text-primary-foreground text-xl tracking-widest">
+              1006588860
+            </p>
+            <p className="text-primary-foreground/70 text-xs mt-0.5">Keystone Bank</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
       {/* Newsletter */}
       <NewsletterSignup />
 

@@ -4,26 +4,27 @@ import { ArrowLeft, Calendar, MapPin, Clock, Share2, Tag, ExternalLink, Sparkles
 import { Button } from "@/components/ui/button";
 import MainLayout from "@/layouts/MainLayout";
 import EventCard from "@/components/EventCard";
-import { getEventById, getEvents } from "@/services/apiService";
+import { getEventBySlug, getEvents } from "@/services/apiService";
 import type { ChurchEvent } from "@/services/apiService";
 
 const EventDetail = () => {
-  const { id } = useParams<{ id: string }>();
-  const [event, setEvent]             = useState<ChurchEvent | null>(null);
+  const { slug } = useParams<{ slug: string }>(); const [event, setEvent] = useState<ChurchEvent | null>(null);
   const [otherEvents, setOtherEvents] = useState<ChurchEvent[]>([]);
-  const [loading, setLoading]         = useState(true);
-  const [notFound, setNotFound]       = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
-    if (!id) return;
-    Promise.all([getEventById(Number(id)), getEvents()])
-      .then(([eventRes, eventsRes]) => {
-        setEvent(eventRes.data);
-        setOtherEvents(eventsRes.data.filter((e) => e.id !== Number(id)).slice(0, 3));
-      })
-      .catch(() => setNotFound(true))
-      .finally(() => setLoading(false));
-  }, [id]);
+  if (!slug) return;
+  Promise.all([getEventBySlug(slug), getEvents()])
+    .then(([eventRes, eventsRes]) => {
+      setEvent(eventRes.data);
+      setOtherEvents(
+        eventsRes.data.filter((e) => e.slug !== slug).slice(0, 3)
+      );
+    })
+    .catch(() => setNotFound(true))
+    .finally(() => setLoading(false));
+}, [slug]);
 
   if (loading) {
     return (
@@ -52,7 +53,7 @@ const EventDetail = () => {
     );
   }
 
-  const dateObj    = new Date(event.date);
+  const dateObj = new Date(event.date);
   const endDateObj = event.end_date ? new Date(event.end_date) : null;
 
   const formattedDate = endDateObj
@@ -121,12 +122,12 @@ const EventDetail = () => {
         )}
 
         {/* Description */}
-<div className="mb-10">
-  <h2 className="font-heading text-2xl font-semibold text-foreground mb-4">
-    About This Event
-  </h2>
-  <div
-    className="prose prose-sm md:prose-base max-w-none
+        <div className="mb-10">
+          <h2 className="font-heading text-2xl font-semibold text-foreground mb-4">
+            About This Event
+          </h2>
+          <div
+            className="prose prose-sm md:prose-base max-w-none
       prose-headings:font-heading prose-headings:text-foreground
       prose-p:text-foreground/90 prose-p:leading-relaxed
       prose-strong:text-foreground
@@ -134,15 +135,15 @@ const EventDetail = () => {
       prose-ol:text-foreground/90
       prose-blockquote:border-accent prose-blockquote:text-muted-foreground
       prose-a:text-accent prose-a:underline"
-    dangerouslySetInnerHTML={{ __html: event.description }}
-  />
-  <p className="mt-6 text-base md:text-lg text-foreground/90 leading-relaxed">
-    Join us for this special gathering as we come together as a church family.
-    Whether you're a long-time member or visiting for the first time, you are
-    warmly welcome. Come expecting to be blessed, encouraged, and refreshed in
-    the presence of the Lord.
-  </p>
-</div>
+            dangerouslySetInnerHTML={{ __html: event.description }}
+          />
+          <p className="mt-6 text-base md:text-lg text-foreground/90 leading-relaxed">
+            Join us for this special gathering as we come together as a church family.
+            Whether you're a long-time member or visiting for the first time, you are
+            warmly welcome. Come expecting to be blessed, encouraged, and refreshed in
+            the presence of the Lord.
+          </p>
+        </div>
 
         {/* Details card */}
         <div className="bg-secondary rounded-xl p-6 md:p-8 mb-10 grid sm:grid-cols-3 gap-6">
@@ -212,7 +213,7 @@ const EventDetail = () => {
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {otherEvents.map((e) => (
-                <Link to={`/events/${e.id}`} key={e.id}>
+                <Link to={`/events/${e.slug}`} key={e.slug}>
                   <EventCard event={e} />
                 </Link>
               ))}
