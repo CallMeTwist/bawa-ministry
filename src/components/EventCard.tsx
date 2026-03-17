@@ -2,6 +2,9 @@ import { Calendar, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import type { ChurchEvent } from "@/services/apiService";
 
+const stripHtml = (html: string): string =>
+  html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+
 const EventCard = ({ event }: { event: ChurchEvent }) => {
   const dateObj = new Date(event.date);
 
@@ -18,10 +21,16 @@ const EventCard = ({ event }: { event: ChurchEvent }) => {
         </div>
         <div className="p-5 flex-1">
           <h3 className="font-heading text-lg font-semibold text-foreground mb-1">{event.title}</h3>
-          <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{event.description}</p>
+          <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
+            {event.description ? stripHtml(event.description) : ""}
+          </p>
           <div className="flex flex-wrap gap-3 text-xs text-muted-foreground">
-            <span className="flex items-center gap-1"><Calendar className="h-3 w-3 text-accent" />{dateObj.toLocaleDateString()}</span>
-            <span className="flex items-center gap-1"><MapPin className="h-3 w-3 text-accent" />{event.location}</span>
+            <span className="flex items-center gap-1">
+              <Calendar className="h-3 w-3 text-accent" />{dateObj.toLocaleDateString()}
+            </span>
+            <span className="flex items-center gap-1">
+              <MapPin className="h-3 w-3 text-accent" />{event.location}
+            </span>
           </div>
         </div>
       </CardContent>

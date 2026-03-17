@@ -58,6 +58,7 @@ export interface Ministry {
   name: string;
   slug: string;
   description: string;
+  full_details: string | null;
   leader: string | null;
   email: string | null;
   meeting_time: string | null;
@@ -90,6 +91,7 @@ export interface TeamMember {
   name: string;
   role: string;
   bio: string;
+  full_info: string | null;
   image: string | null;
   sort_order: number;
 }
@@ -125,6 +127,9 @@ export const getMinistries = (): Promise<{ data: Ministry[] }> =>
 
 export const getEventById = (id: number): Promise<{ data: ChurchEvent }> =>
   get(`/events/${id}`);
+
+export const getFeaturedEvents = (): Promise<{ data: ChurchEvent[] }> =>
+  get('/events/featured');
 
 export const getMinistryBySlug = (slug: string): Promise<{ data: Ministry }> =>
   get(`/ministries/${slug}`);

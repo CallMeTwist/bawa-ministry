@@ -121,16 +121,28 @@ const EventDetail = () => {
         )}
 
         {/* Description */}
-        <div className="prose-custom font-body text-foreground/90 leading-relaxed text-base md:text-lg mb-10">
-          <h2 className="font-heading text-2xl font-semibold text-foreground mb-4">About This Event</h2>
-          <p>{event.description}</p>
-          <p className="mt-4">
-            Join us for this special gathering as we come together as a church family.
-            Whether you're a long-time member or visiting for the first time, you are
-            warmly welcome. Come expecting to be blessed, encouraged, and refreshed in
-            the presence of the Lord.
-          </p>
-        </div>
+<div className="mb-10">
+  <h2 className="font-heading text-2xl font-semibold text-foreground mb-4">
+    About This Event
+  </h2>
+  <div
+    className="prose prose-sm md:prose-base max-w-none
+      prose-headings:font-heading prose-headings:text-foreground
+      prose-p:text-foreground/90 prose-p:leading-relaxed
+      prose-strong:text-foreground
+      prose-ul:text-foreground/90 prose-li:text-foreground/90
+      prose-ol:text-foreground/90
+      prose-blockquote:border-accent prose-blockquote:text-muted-foreground
+      prose-a:text-accent prose-a:underline"
+    dangerouslySetInnerHTML={{ __html: event.description }}
+  />
+  <p className="mt-6 text-base md:text-lg text-foreground/90 leading-relaxed">
+    Join us for this special gathering as we come together as a church family.
+    Whether you're a long-time member or visiting for the first time, you are
+    warmly welcome. Come expecting to be blessed, encouraged, and refreshed in
+    the presence of the Lord.
+  </p>
+</div>
 
         {/* Details card */}
         <div className="bg-secondary rounded-xl p-6 md:p-8 mb-10 grid sm:grid-cols-3 gap-6">

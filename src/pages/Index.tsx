@@ -10,18 +10,32 @@ import EventCard from "@/components/EventCard";
 import MinistryCard from "@/components/MinistryCard";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import heroImage from "@/assets/hero-church.jpg";
-import { getDevotionals, getEvents, getMinistries } from "@/services/apiService";
+import { getDevotionals, getFeaturedEvents, getMinistries } from "@/services/apiService";
 import type { Devotional, ChurchEvent, Ministry } from "@/services/apiService";
 
 const Index = () => {
-  const [devotionals, setDevotionals] = useState<Devotional[]>([]);
-  const [events, setEvents] = useState<ChurchEvent[]>([]);
-  const [ministries, setMinistries] = useState<Ministry[]>([]);
+  const [devotionals, setDevotionals]       = useState<Devotional[]>([]);
+  const [events, setEvents]                 = useState<ChurchEvent[]>([]);
+  const [ministries, setMinistries]         = useState<Ministry[]>([]);
+  const [loadingDev, setLoadingDev]         = useState(true);
+  const [loadingEvents, setLoadingEvents]   = useState(true);
+  const [loadingMin, setLoadingMin]         = useState(true);
 
   useEffect(() => {
-    getDevotionals().then((res) => setDevotionals(res.data.slice(0, 3))).catch(() => {});
-    getEvents().then((res) => setEvents(res.data.slice(0, 4))).catch(() => {});
-    getMinistries().then((res) => setMinistries(res.data)).catch(() => {});
+    getDevotionals()
+      .then((res) => setDevotionals(res.data.slice(0, 3)))
+      .catch(() => {})
+      .finally(() => setLoadingDev(false));
+
+    getFeaturedEvents()
+      .then((res) => setEvents(res.data))
+      .catch(() => {})
+      .finally(() => setLoadingEvents(false));
+
+    getMinistries()
+      .then((res) => setMinistries(res.data))
+      .catch(() => {})
+      .finally(() => setLoadingMin(false));
   }, []);
 
   return (
@@ -70,7 +84,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Daily Verse — already handles its own fetch internally */}
+      {/* Daily Verse */}
       <DailyVerse />
 
       {/* Latest Devotionals */}
@@ -81,12 +95,16 @@ const Index = () => {
           subtitle="Nourish your soul with daily reflections on God's Word."
         />
 
-        {devotionals.length === 0 ? (
+        {loadingDev ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(3)].map((_, i) => (
               <div key={i} className="rounded-xl bg-muted animate-pulse h-56" />
             ))}
           </div>
+        ) : devotionals.length === 0 ? (
+          <p className="text-center text-muted-foreground py-10">
+            No devotionals published yet.
+          </p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {devotionals.map((d) => (
@@ -107,7 +125,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Upcoming Events */}
+      {/* Featured Events */}
       <section className="bg-secondary">
         <div className="page-container">
           <SectionHeader
@@ -116,16 +134,22 @@ const Index = () => {
             subtitle="Join us for worship, fellowship, and community events."
           />
 
-          {events.length === 0 ? (
+          {loadingEvents ? (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {[...Array(4)].map((_, i) => (
                 <div key={i} className="rounded-xl bg-muted animate-pulse h-32" />
               ))}
             </div>
+          ) : events.length === 0 ? (
+            <p className="text-center text-muted-foreground py-10">
+              No featured events at the moment. Check back soon.
+            </p>
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {events.map((e) => (
-                <EventCard key={e.id} event={e} />
+                <Link to={`/events/${e.id}`} key={e.id} className="block">
+                  <EventCard event={e} />
+                </Link>
               ))}
             </div>
           )}
@@ -151,16 +175,22 @@ const Index = () => {
           subtitle="Find your place to serve and grow in our church community."
         />
 
-        {ministries.length === 0 ? (
+        {loadingMin ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[...Array(4)].map((_, i) => (
               <div key={i} className="rounded-xl bg-muted animate-pulse h-52" />
             ))}
           </div>
+        ) : ministries.length === 0 ? (
+          <p className="text-center text-muted-foreground py-10">
+            No ministries published yet.
+          </p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {ministries.map((m) => (
-              <MinistryCard key={m.id} ministry={m} />
+              <Link to={`/ministries/${m.slug}`} key={m.id} className="block">
+                <MinistryCard ministry={m} />
+              </Link>
             ))}
           </div>
         )}
