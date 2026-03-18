@@ -248,23 +248,23 @@ const ReadMoreHtml = ({ html }: { html: string }) => {
 // ─────────────────────────────────────────────────────────────────────────
 
 const iconMap: Record<string, React.ReactNode> = {
-  youth:         <Users className="h-10 w-10" />,
-  prayer:        <Heart className="h-10 w-10" />,
-  outreach:      <HandHelping className="h-10 w-10" />,
+  youth: <Users className="h-10 w-10" />,
+  prayer: <Heart className="h-10 w-10" />,
+  outreach: <HandHelping className="h-10 w-10" />,
   "bible-study": <BookOpen className="h-10 w-10" />,
 };
 
 const MinistryDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [ministry, setMinistry]               = useState<Ministry | null>(null);
+  const [ministry, setMinistry] = useState<Ministry | null>(null);
   const [otherMinistries, setOtherMinistries] = useState<Ministry[]>([]);
-  const [loading, setLoading]                 = useState(true);
-  const [notFound, setNotFound]               = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     getMinistries()
       .then((res) => {
-        const all     = res.data;
+        const all = res.data;
         const current = all.find((m) => m.slug === slug);
         if (!current) {
           setNotFound(true);
@@ -309,6 +309,18 @@ const MinistryDetail = () => {
   }
 
   const ministryIcon = iconMap[ministry.slug] ?? <Users className="h-8 w-8" />;
+
+//   const MINISTRY_FOUNDED: Record<string, { label: string; value: string }> = {
+//   "tbmi-conference-and-seminar": {
+//     label: "First Conference",
+//     value: "2001",
+//   },
+//   "youth": {
+//     label: "Founded",
+//     value: "2005",
+//   },
+//   // add more slugs as needed
+// };
 
   return (
     <MainLayout>
@@ -359,13 +371,14 @@ const MinistryDetail = () => {
               <p className="font-heading font-semibold text-foreground">{ministry.leader}</p>
             </div>
           )}
-          {ministry.meeting_time && (
-            <div className="bg-secondary rounded-xl p-6 text-center">
-              <Clock className="h-6 w-6 text-accent mx-auto mb-2" />
-              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">When We Meet</p>
-              <p className="font-heading font-semibold text-foreground">{ministry.meeting_time}</p>
-            </div>
-          )}
+
+          <div className="bg-secondary rounded-xl p-6 text-center">
+            <Clock className="h-6 w-6 text-accent mx-auto mb-2" />
+            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Founded</p>
+            <p className="font-heading font-semibold text-foreground">
+              {ministry.meeting_time ?? "Established by TBMi"}
+            </p>
+          </div>
         </div>
 
         {/* Full rich details — with conditional read more */}
@@ -379,22 +392,22 @@ const MinistryDetail = () => {
         )}
 
         {/* Meeting time highlight */}
-      
-          <div className="bg-gold-light rounded-xl p-6 md:p-8 mb-10 text-center">
-            <h3 className="font-heading text-lg font-semibold text-foreground mb-2">For Partnership & Volunteers</h3>
-            <p className="font-body text-foreground/80">
-              <a
-            href="mailto:tinabawa.ministries@gmail.com"
-            className="text-foreground text-sm font-semibold hover:underline block"
-          >
-            ✉ tinabawa.ministries@gmail.com
-          </a>
-          <a href="tel:08069743456" className="text-foreground text-sm font-semibold hover:underline block mt-0.5">
-            📞 08069743456
-          </a>
-            </p>
-          </div>
-        
+
+        <div className="bg-gold-light rounded-xl p-6 md:p-8 mb-10 text-center">
+          <h3 className="font-heading text-lg font-semibold text-foreground mb-2">For Partnership & Volunteers</h3>
+          <p className="font-body text-foreground/80">
+            <a
+              href="mailto:tinabawa.ministries@gmail.com"
+              className="text-foreground text-sm font-semibold hover:underline block"
+            >
+              ✉ tinabawa.ministries@gmail.com
+            </a>
+            <a href="tel:08069743456" className="text-foreground text-sm font-semibold hover:underline block mt-0.5">
+              📞 08069743456
+            </a>
+          </p>
+        </div>
+
 
         {/* Share & CTA */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-border mb-12">

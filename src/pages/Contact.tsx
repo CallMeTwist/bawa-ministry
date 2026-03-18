@@ -13,7 +13,7 @@ const WHATSAPP_NUMBER = import.meta.env.VITE_CHURCH_WHATSAPP ?? "08069743456";
 type Status = "idle" | "sending" | "success" | "error";
 
 const Contact = () => {
-  const [form, setForm]     = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<Status>("idle");
   const [feedback, setFeedback] = useState("");
 
@@ -147,9 +147,9 @@ const Contact = () => {
           {/* ── Info ─────────────────────────────────────────────────────── */}
           <div className="space-y-6">
             {[
-              { icon: <MapPin className="h-5 w-5" />, title: "Address",   text: "1st Floor, Oyo State House, Ralph Shodeinde Street, Central Business District, Abuja FCT Nigeria." },
-              { icon: <Phone className="h-5 w-5" />,  title: "Phone",     text: "08069743456" },
-              { icon: <Mail className="h-5 w-5" />,   title: "Email",     text: "adm@tbm-ng.org" },
+              { icon: <MapPin className="h-5 w-5" />, title: "Address", text: "1st Floor, Oyo State House, Ralph Shodeinde Street, Central Business District, Abuja FCT Nigeria." },
+              { icon: <Phone className="h-5 w-5" />, title: "Phone", text: "08069743456" },
+              { icon: <Mail className="h-5 w-5" />, title: "Email", text: "adm@tbm-ng.org" },
             ].map((item) => (
               <div key={item.title} className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-gold-light flex items-center justify-center text-accent shrink-0">
@@ -177,47 +177,47 @@ const Contact = () => {
             </div> */}
 
             {/* Map placeholder */}
-<div className="rounded-xl overflow-hidden border h-52 bg-muted flex items-center justify-center">
-  <p className="text-muted-foreground text-sm">Map integration coming soon</p>
-</div>
+            <div className="rounded-xl overflow-hidden border h-52 bg-muted flex items-center justify-center">
+              <p className="text-muted-foreground text-sm">Map integration coming soon</p>
+            </div>
 
-{/* Partnership, Donations & Sponsorship */}
-<div className="rounded-2xl border border-accent/30 bg-accent/5 p-6 space-y-5">
-  <h4 className="font-heading text-base font-bold text-foreground flex items-center gap-2">
-    <span className="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center text-accent text-sm">🤝</span>
-    Partnership & Sponsorship
-  </h4>
-  <div className="space-y-1">
-    <p className="text-sm text-muted-foreground">Write to us at:</p>
-    <a
-      href="mailto:tinabawa.ministries@gmail.com"
-      className="text-sm font-semibold text-accent hover:underline block"
-    >
-      tinabawa.ministries@gmail.com
-    </a>
-    <a href="tel:08069743456" className="text-sm font-semibold text-accent hover:underline block">
-      08069743456
-    </a>
-  </div>
+            {/* Partnership, Donations & Sponsorship */}
+            {/* <div className="rounded-2xl border border-accent/30 bg-accent/5 p-6 space-y-5">
+              <h4 className="font-heading text-base font-bold text-foreground flex items-center gap-2">
+                <span className="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center text-accent text-sm">🤝</span>
+                Partnership & Sponsorship
+              </h4>
+              <div className="space-y-1">
+                <p className="text-sm text-muted-foreground">Write to us at:</p>
+                <a
+                  href="mailto:tinabawa.ministries@gmail.com"
+                  className="text-sm font-semibold text-accent hover:underline block"
+                >
+                  tinabawa.ministries@gmail.com
+                </a>
+                <a href="tel:08069743456" className="text-sm font-semibold text-accent hover:underline block">
+                  08069743456
+                </a>
+              </div>
 
-  <div className="border-t border-border/50 pt-4 space-y-1">
-    <h4 className="font-heading text-base font-bold text-foreground flex items-center gap-2">
-      <span className="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center text-accent text-sm">🏦</span>
-      Send Donations To
-    </h4>
-    <p className="text-sm font-semibold text-foreground">Tina Bawa Ministries International Inc.</p>
-    <div className="flex items-center gap-3 bg-secondary rounded-lg px-4 py-3 mt-2">
-      <div>
-        <p className="text-xs text-muted-foreground uppercase tracking-wider mb-0.5">Account Number</p>
-        <p className="font-heading font-bold text-foreground text-lg tracking-widest">1006588860</p>
-      </div>
-      <div className="ml-auto text-right">
-        <p className="text-xs text-muted-foreground uppercase tracking-wider mb-0.5">Bank</p>
-        <p className="font-semibold text-foreground text-sm">Keystone Bank</p>
-      </div>
-    </div>
-  </div>
-</div>
+              <div className="border-t border-border/50 pt-4 space-y-1">
+                <h4 className="font-heading text-base font-bold text-foreground flex items-center gap-2">
+                  <span className="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center text-accent text-sm">🏦</span>
+                  Send Donations To
+                </h4>
+                <p className="text-sm font-semibold text-foreground">Tina Bawa Ministries International Inc.</p>
+                <div className="flex items-center gap-3 bg-secondary rounded-lg px-4 py-3 mt-2">
+                  <div>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wider mb-0.5">Account Number</p>
+                    <p className="font-heading font-bold text-foreground text-lg tracking-widest">1006588860</p>
+                  </div>
+                  <div className="ml-auto text-right">
+                    <p className="text-xs text-muted-foreground uppercase tracking-wider mb-0.5">Bank</p>
+                    <p className="font-semibold text-foreground text-sm">Keystone Bank</p>
+                  </div>
+                </div>
+              </div>
+            </div> */}
           </div>
 
         </div>

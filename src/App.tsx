@@ -34,6 +34,7 @@ const App = () => (
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
             <Route path="/devotionals" element={<Devotionals />} />
             <Route path="/devotionals/:slug" element={<DevotionalDetail />} />
             <Route path="/sermons" element={<Sermons />} />
@@ -41,7 +42,6 @@ const App = () => (
             <Route path="/events/:slug" element={<EventDetail />} />
             <Route path="/ministries" element={<Ministries />} />
             <Route path="/ministries/:slug" element={<MinistryDetail />} />
-            <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
