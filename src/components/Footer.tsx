@@ -57,11 +57,11 @@ const Footer = () => (
             </div>
             <div className="flex items-center gap-2">
               <Phone className="h-4 w-4 text-accent shrink-0" />
-              <span>+2347064412910</span>
+              <span>08069743456</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-accent shrink-0" />
-              <span>info@tinabawaministries.org</span>
+              <span>tinabawa.ministries@gmail.com</span>
             </div>
           </div>
           <div className="flex gap-3 mt-4">
