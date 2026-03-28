@@ -1,7 +1,12 @@
 const BASE = import.meta.env.VITE_API_URL + '/api/v1';
 
+const headers = {
+  'Accept': 'application/json',
+  'ngrok-skip-browser-warning': 'true',
+};
+
 const get = async (path: string) => {
-  const res = await fetch(`${BASE}${path}`);
+  const res = await fetch(`${BASE}${path}`, { headers });
   if (!res.ok) throw new Error(`API error: ${res.status}`);
   return res.json();
 };
@@ -145,7 +150,10 @@ export const submitContactForm = (data: {
 }): Promise<{ message: string }> =>
   fetch(`${BASE}/contact`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify(data),
   }).then((res) => {
     if (!res.ok) return res.json().then((err) => Promise.reject(err));
