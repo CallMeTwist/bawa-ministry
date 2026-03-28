@@ -7,10 +7,10 @@ import tinalogo from "@/assets/tinalogo.png";
 const navLinks = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
+  { label: "Ministries", path: "/ministries" },
   { label: "Devotionals", path: "/devotionals" },
   { label: "Sermons", path: "/sermons" },
   { label: "Events", path: "/events" },
-  { label: "Ministries", path: "/ministries" },
   { label: "Contact", path: "/contact" },
 ];
 
