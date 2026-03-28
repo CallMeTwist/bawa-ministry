@@ -132,7 +132,7 @@ const About = () => {
         <SectionHeader
           label="Our Story"
           title="Tina Bawa Ministries International Inc"
-          subtitle="A community built on faith, love, and service since 2010."
+          subtitle="A community built on faith, love, and service since 1999."
         />
 
         {/* Story */}
