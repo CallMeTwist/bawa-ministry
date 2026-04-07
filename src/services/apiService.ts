@@ -2,7 +2,7 @@ const BASE = import.meta.env.VITE_API_URL + '/api/v1';
 
 const headers = {
   'Accept': 'application/json',
-  'ngrok-skip-browser-warning': 'true',
+  
 };
 
 const get = async (path: string) => {

@@ -59,7 +59,7 @@ const Index = () => {
             className="text-lg md:text-xl max-w-2xl mx-auto mb-10 animate-fade-in"
             style={{ color: "hsl(var(--primary-foreground) / 0.85)", animationDelay: "0.2s" }}
           >
-            Join our community as we grow together in Christ through worship, fellowship, and service.
+            Join our community as we grow together in Christ through worship, fellowship, and humanitarian service.
           </p>
           <div className="flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <Button

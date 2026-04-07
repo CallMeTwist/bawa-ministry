@@ -28,7 +28,7 @@ const Navbar = () => {
               alt="Tina Bawa Ministries"
               className="h-16 w-auto object-contain"
             />
-            <span className="font-heading text-xl font-bold text-foreground">Tina Bawa Ministries</span>
+            <span className="font-heading text-xl font-bold text-foreground">Tina Bawa Ministries International</span>
           </Link>
 
           {/* Desktop nav */}
