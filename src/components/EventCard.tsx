@@ -6,7 +6,9 @@ const stripHtml = (html: string): string =>
   html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 
 const EventCard = ({ event }: { event: ChurchEvent }) => {
-  const dateObj = new Date(event.date);
+  // const dateObj = new Date(event.date);
+
+  const dateObj = new Date(event.date + 'T00:00:00');
 
   return (
     <Card className="card-hover border-border/50 overflow-hidden">

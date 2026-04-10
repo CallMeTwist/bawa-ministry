@@ -53,8 +53,11 @@ const EventDetail = () => {
     );
   }
 
-  const dateObj = new Date(event.date);
-  const endDateObj = event.end_date ? new Date(event.end_date) : null;
+  // const dateObj = new Date(event.date);
+  // const endDateObj = event.end_date ? new Date(event.end_date) : null;
+
+  const dateObj = new Date(event.date + 'T00:00:00');
+const endDateObj = event.end_date ? new Date(event.end_date + 'T00:00:00') : null;
 
   const formattedDate = endDateObj
     ? `${dateObj.toLocaleDateString("en", { month: "long", day: "numeric" })} – ${endDateObj.toLocaleDateString("en", { month: "long", day: "numeric", year: "numeric" })}`
