@@ -147,7 +147,7 @@ const Index = () => {
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {events.map((e) => (
-                <Link to={`/events/${e.id}`} key={e.id} className="block">
+                <Link to={`/events/${e.slug}`} key={e.slug} className="block">
                   <EventCard event={e} />
                 </Link>
               ))}
